@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trinity Healthcare Talent Services - Contact</title>
+  
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "lmXp8oCvh_t5173KP",
+      });
+   })();
+</script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+      <!-- Add Swiper JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+  <!-- Google Font: IBM Plex Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./trinitylogo.jpg" type="image/png">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+    <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .circle-loader {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 40px;
+        }
+        
+        .circle-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            animation: rotate 10s linear infinite;
+        }
+        
+        .circle-text span {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform-origin: 0 100px;
+            font-weight: bold;
+            font-size: 16px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .inner-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .medical-icon {
+            font-size: 30px;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+        
+        .loading-text {
+            font-size: 1.5rem;
+            color: white;
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .loading-dots {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% {
+                content: '.';
+            }
+            40% {
+                content: '..';
+            }
+            60%, 100% {
+                content: '...';
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+        
+        .preloader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        /* Header Styles */
+        .healthcare-header {
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid #4299e1;
+            z-index: 100;
+        }
+        
+        .logo-text {
+            background: linear-gradient(90deg, #4299e1, #63b3ed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #63b3ed;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #63b3ed;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .mobile-menu.open {
+            max-height: 300px;
+        }
+        
+        .mobile-nav-link {
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .mobile-nav-link:hover {
+            background-color: #2d3748;
+            border-left-color: #4299e1;
+            padding-left: 1.5rem;
+        }
+        
+        .menu-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-toggle.active {
+            transform: rotate(90deg);
+        }
+        
+        /* Content Styles */
+        .content-section {
+            padding-top: 6rem;
+        }
+        
+        @media (max-width: 768px) {
+            .circle-loader {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .circle-text span {
+                transform-origin: 0 75px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="circle-loader">
+            <div class="circle-text" id="circleText"></div>
+            <div class="inner-circle">
+                <div class="medical-icon">➕</div>
+            </div>
+        </div>
+        <div class="loading-text">Loading<span class="loading-dots"></span></div>
+    </div>
+    
+
+  <!-- Enhanced Header -->
+  <header class="bg-black-transperent shadow-lg top-0 z-50 fixed w-full">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#home" class="logo-link">
+        <img src="./trinitylogo-.png" alt="Trinity Healthcare Logo" class="w-14 h-14 rounded-lg shadow-lg">
+        <div>
+          <p class="text-xl font-bold gradient-text tracking-wide">
+            TRINITY HEALTHCARE
+          </p>
+          <p class="text-sm text-yellow-300 font-semibold">TALENT SERVICES</p>
+        </div>
+      </a>
+      
+      <div class="flex items-center gap-6">
+        <div class="theme-toggle-container hidden md:flex items-center gap-2">
+        
+        </div>
+        
+        <div class="md:hidden">
+          <button id="menuToggle" class="text-yellow-400 text-2xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      
+      <nav class="hidden md:flex space-x-8 text-sm font-semibold">
+        <a href="index.html" class="text-yellow-400 hover:text-yellow-300 nav-glow transition-all duration-300">Home</a>
+        <a href="Services.html"  class="text-yellow-400 hover:text-yellow-300 nav-glow transition-all duration-300">Services</a>
+        <a href="About.html"  class="text-yellow-400 hover:text-yellow-300 nav-glow transition-all duration-300">About Us</a>
+        <a href="Contact.html"  class="text-yellow-400 hover:text-yellow-300 nav-glow transition-all duration-300">Contact</a>
+      </nav>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 flex flex-col space-y-3 bg-slate-900 shadow-xl">
+      <div class="theme-toggle-container flex justify-center py-3">
+      </div>
+      <a href="index.html" class="text-sm font-semibold text-yellow-400 hover:text-yellow-300 py-2 px-4 rounded-lg hover:bg-slate-800 transition-all">Home</a>
+      <a href="services.html" target="_blank" class="text-sm font-semibold text-yellow-400 hover:text-yellow-300 py-2 px-4 rounded-lg hover:bg-slate-800 transition-all">Services</a>
+      <a href="careers.html" target="_blank" class="text-sm font-semibold text-yellow-400 hover:text-yellow-300 py-2 px-4 rounded-lg hover:bg-slate-800 transition-all">Career</a>
+      <a href="contact.html" target="_blank" class="text-sm font-semibold text-yellow-400 hover:text-yellow-300 py-2 px-4 rounded-lg hover:bg-slate-800 transition-all">Contact</a>
+    </div>
+  </header>
+
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-gray-900 py-20 px-4 animate__animated" 
+         data-aos="fade-left">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-2xl font-bold text-yellow-400 mb-6">Contact Us</h3>
+      <p class="text-yellow-300 mb-8">Have questions or ready to start your hiring journey? <br>Reach out to us today and let's talk about how we can help you.</p>
+
+      <form  onsubmit="SendMail();" class="bg-gray-800 shadow rounded-lg p-6 space-y-4 max-w-xl mx-auto" id="contactForm">
+        <input type="text" 
+         id="name"
+         placeholder="Your Name" 
+         class="w-full border border-yellow-400 bg-gray-700 text-yellow-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400" required />
+        <input type="email"
+          id="email" 
+          placeholder="Email Address" 
+          class="w-full border border-yellow-400 bg-gray-700 text-yellow-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400" required />
+        <textarea
+          id="message"
+          placeholder="Your Message"
+          rows="4" 
+          class="w-full border border-yellow-400 bg-gray-700 text-yellow-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-400" required></textarea>
+        <button type="submit" 
+        
+        class="bg-yellow-600 text-white px-5 py-3 rounded hover:bg-yellow-700 transition">Send Message</button>
+        <!-- <p class="text-sm text-green-400 hidden" id="responseMsg">Thanks! We'll get back to you shortly.</p> -->
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-black-transperent text-yellow-400 pt-16 pb-8 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Company Info -->
+        <div>
+          <div class="logo-link mb-6">
+            <img src="./trinitylogo-.png" alt="Trinity Healthcare Logo" class="w-16 h-16 rounded-lg">
+            <div>
+              <h1 class="text-xl font-bold gradient-text">TRINITY HEALTHCARE</h1>
+              <p class="text-sm text-yellow-300 font-semibold">TALENT SERVICES</p>
+            </div>
+          </div>
+          <p class="text-yellow-200 mb-6 leading-relaxed">
+            Trinity Healthcare Talent Services, LLC.<br>
+            We provide the right talent for your team.
+          </p>
+          <div class="flex space-x-4">
+            <a href="https://www.facebook.com/share/1CZyZCETsC/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-yellow-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110" aria-label="Facebook">
+              <i class="fab fa-facebook-f text-xl"></i>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="text-yellow-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110" aria-label="Twitter">
+              <i class="fab fa-twitter text-xl"></i>
+            </a>
+            <a href="https://www.instagram.com/trinity.hts?igsh=dXdodjJuajIwNTE1" target="_blank" rel="noopener noreferrer" class="text-yellow-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110" aria-label="Instagram">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/trinity-hts/" target="_blank" rel="noopener noreferrer" class="text-yellow-300 hover:text-yellow-400 transition-all duration-300 transform hover:scale-110" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in text-xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-bold mb-6 gradient-text">Quick Links</h3>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-yellow-300 hover:text-yellow-400 transition-colors flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs"></i> Home
+            </a></li>
+            <li><a href="services.html" class="text-yellow-300 hover:text-yellow-400 transition-colors flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs"></i> Services
+            </a></li>
+            <li><a href="About.html" class="text-yellow-300 hover:text-yellow-400 transition-colors flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs"></i> About Us
+            </a></li>
+            <li><a href="contact.html" class="text-yellow-300 hover:text-yellow-400 transition-colors flex items-center gap-2">
+              <i class="fas fa-chevron-right text-xs"></i> Contact Us
+            </a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-lg font-bold mb-6 gradient-text">Contact Us</h3>
+          <address class="not-italic text-yellow-200 space-y-3">
+              <p class="flex items-center gap-3">
+              <i class="fas fa-envelope text-yellow-400"></i>
+              <a href="mailto:Info@trinity-hts.com" class="hover:text-yellow-400 transition-colors">Info@trinity-hts.com</a>
+            </p>
+            <p class="flex items-center gap-3">
+              <i class="fas fa-map-marker-alt text-yellow-400"></i>
+              <span>Indianapolis, IN</span>
+            </p>
+          </address>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h3 class="text-lg font-bold mb-6 gradient-text">Stay Updated</h3>
+          <p class="text-yellow-200 mb-4">Subscribe to our newsletter for health tips and updates.</p>
+          <form class="space-y-3">
+            <input type="email" placeholder="Your email address" class="w-full px-4 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-all">
+            <button type="submit" class="btn-gold w-full">
+              Subscribe Now
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-yellow-800 mt-12 pt-8 flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+        <p class="text-yellow-500 text-sm text-center lg:text-left">
+          © 2025 Trinity Healthcare Talent Services. All rights reserved.
+        </p>
+        <p class="text-yellow-500 text-sm text-center lg:text-left">
+          DEVELOPED BY <a href="https://ayorindetumininu.github.io/astroman.com/" class="text-yellow-400 hover:text-yellow-300 transition-colors">ASTRO-TECH</a>
+        </p>
+        <div class="flex space-x-6">
+          <a href="#" class="text-yellow-500 hover:text-yellow-400 text-sm transition-colors">Privacy Policy</a>
+          <a href="#" class="text-yellow-500 hover:text-yellow-400 text-sm transition-colors">Terms of Service</a>
+          <a href="#" class="text-yellow-500 hover:text-yellow-400 text-sm transition-colors">Accessibility</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+    <script>
+          // Mobile menu functionality
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('hidden');
+    });
+
+                 // Preloader functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.getElementById('preloader');
+            const circleText = document.getElementById('circleText');
+            
+            // Create circular text
+            const text = "Trinity Healthcare Services • Trinity Healthcare Services • ";
+            const radius = 100;
+            const angle = 360 / text.length;
+            
+            for (let i = 0; i < text.length; i++) {
+                const charSpan = document.createElement('span');
+                charSpan.textContent = text[i];
+                charSpan.style.transform = `rotate(${angle * i}deg)`;
+                circleText.appendChild(charSpan);
+            }
+            
+            // Hide preloader after page loads
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    preloader.classList.add('preloader-hidden');
+                }, 3000);
+            });
+          });       
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
